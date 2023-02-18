@@ -14,10 +14,19 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if r.Method != "GET" {
+		http.Error(w, "method is not supported", http.StatusNotFound)
+		return
+	}
+
+		fmt.Fprintf(w, "Hello from golang server hello handler")
 
 }
 
 
+func formHandler(w http.ResponseWriter, r *http.Request) {
+	
+}
 
 
 func main () {

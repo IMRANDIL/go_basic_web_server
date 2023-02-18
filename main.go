@@ -1,6 +1,10 @@
 package main
 
-import "net/http"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
 
 
 
@@ -10,7 +14,11 @@ func main () {
 	http.Handle("/",fileServer)
 	http.HandleFunc("/form",formHandler)
 	http.HandleFunc("/hello", helloHandler)
+	fmt.Printf("server started on port :8000\n")
 
-	http.ListenAndServe(":8000",nil)
+	err :=http.ListenAndServe(":8000",nil)
 
+		if err != nil {
+			log.Fatal(err)
+		}
 }
